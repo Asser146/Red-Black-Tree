@@ -14,6 +14,7 @@ class Tree:
         self.nil.left = None
         self.nil.right = None
         self.root = self.nil
+        self.loadData()
 
     def insert(self, data):
         if self.search(self.root, data):
@@ -157,3 +158,10 @@ class Tree:
             return 0
         else:
             return self.treeSize(node.left) + 1 + self.treeSize(node.right)
+
+    def loadData(self):
+        file = open('Dictionary.txt')
+        contents = file.read()
+        words = contents.splitlines()
+        for line in words:
+            self.insert(line)
