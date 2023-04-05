@@ -16,8 +16,7 @@ class Tree:
         self.root = self.nil
 
     def insert(self, data):
-        flag = self.search(self.root, data)
-        if flag is True:
+        if self.search(self.root, data):
             print("ERROR: Word already in the dictionary!")
             return
 
@@ -137,23 +136,21 @@ class Tree:
 
     def search(self, node, data):
         if (node.data == None):
-            # print("Not Found")
             return False
         elif (node.data == data):
-            print("Found")
             return True
         elif data < node.data:
             if node.left is None:
                 return False
             else:
                 # print("Went left")
-                self.search(node.left, data)
+                return self.search(node.left, data)
         else:
             if node.right is None:
                 return False
             else:
                 # print("Went right")
-                self.search(node.right, data)
+                return self.search(node.right, data)
 
     def treeSize(self, node):
         if node.data == None:
